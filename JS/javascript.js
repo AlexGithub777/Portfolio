@@ -13,65 +13,52 @@ var hamburgerMenu = document.querySelector(".hamburger-menu");
 // Add an event listener to the div with the hamburger-menu class
 hamburgerMenu.addEventListener("click", toggleNav());
 
-window.onload = function () {
-    // Get the current path
-    var currentPath = window.location.pathname;
+$("#multiCollapseExample1").addClass("show");
+$("#button1").addClass("selected");
+// Show only one page when a button is clicked, hide the inactive pages
+$(document).ready(function () {
+    // Add event listeners to the buttons
+    $("#button1").on("click", function () {
+        if (!$(this).hasClass("selected")) {
+            hideAllScreens(); // Hide all screens
+            $("#multiCollapseExample1").addClass("show"); // Show Form 1
+            $(this).addClass("selected"); // Add 'selected' class to the clicked button
+            $("#button2, #button3, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
+        }
+    });
 
-    // List of allowed page paths
-    var allowedPages = ["/form.html", "/xml-rss.html", "/js-demo.html"];
+    $("#button2").on("click", function () {
+        if (!$(this).hasClass("selected")) {
+            hideAllScreens(); // Hide all screens
+            $("#multiCollapseExample2").addClass("show"); // Show Form 2
+            $(this).addClass("selected"); // Add 'selected' class to the clicked button
+            $("#button1, #button3, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
+        }
+    });
 
-    // Check if the current path is in the allowedPages list
-    if (allowedPages.includes(currentPath)) {
-        // Run the code only on the allowed pages
-        // Show the first page on page load
-        $("#multiCollapseExample1").addClass("show");
-        $("#button1").addClass("selected");
-        // Show only one page when a button is clicked, hide the inactive pages
-        $(document).ready(function () {
-            // Add event listeners to the buttons
-            $("#button1").on("click", function () {
-                if (!$(this).hasClass("selected")) {
-                    hideAllScreens(); // Hide all screens
-                    $("#multiCollapseExample1").addClass("show"); // Show Form 1
-                    $(this).addClass("selected"); // Add 'selected' class to the clicked button
-                    $("#button2, #button3, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
-                }
-            });
+    $("#button3").on("click", function () {
+        if (!$(this).hasClass("selected")) {
+            hideAllScreens(); // Hide all screens
+            $("#multiCollapseExample3").addClass("show"); // Show Form 3
+            $(this).addClass("selected"); // Add 'selected' class to the clicked button
+            $("#button1, #button2, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
+        }
+    });
 
-            $("#button2").on("click", function () {
-                if (!$(this).hasClass("selected")) {
-                    hideAllScreens(); // Hide all screens
-                    $("#multiCollapseExample2").addClass("show"); // Show Form 2
-                    $(this).addClass("selected"); // Add 'selected' class to the clicked button
-                    $("#button1, #button3, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
-                }
-            });
+    $("#button4").on("click", function () {
+        if (!$(this).hasClass("selected")) {
+            hideAllScreens(); // Hide all screens
+            $("#multiCollapseExample4").addClass("show"); // Show Form 4
+            $(this).addClass("selected"); // Add 'selected' class to the clicked button
+            $("#button1, #button2, #button3").removeClass("selected"); // Remove 'selected' class from other buttons
+        }
+    });
 
-            $("#button3").on("click", function () {
-                if (!$(this).hasClass("selected")) {
-                    hideAllScreens(); // Hide all screens
-                    $("#multiCollapseExample3").addClass("show"); // Show Form 3
-                    $(this).addClass("selected"); // Add 'selected' class to the clicked button
-                    $("#button1, #button2, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
-                }
-            });
-
-            $("#button4").on("click", function () {
-                if (!$(this).hasClass("selected")) {
-                    hideAllScreens(); // Hide all screens
-                    $("#multiCollapseExample4").addClass("show"); // Show Form 4
-                    $(this).addClass("selected"); // Add 'selected' class to the clicked button
-                    $("#button1, #button2, #button3").removeClass("selected"); // Remove 'selected' class from other buttons
-                }
-            });
-
-            // Function to hide all screens
-            function hideAllScreens() {
-                $(".multi-collapse").removeClass("show");
-            }
-        });
+    // Function to hide all screens
+    function hideAllScreens() {
+        $(".multi-collapse").removeClass("show");
     }
-};
+});
 
 function loadRSS() {
     //Use CORS API website as proxy
