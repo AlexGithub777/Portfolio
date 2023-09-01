@@ -13,53 +13,6 @@ var hamburgerMenu = document.querySelector(".hamburger-menu");
 // Add an event listener to the div with the hamburger-menu class
 hamburgerMenu.addEventListener("click", toggleNav());
 
-$("#multiCollapseExample1").addClass("show");
-$("#button1").addClass("selected");
-// Show only one page when a button is clicked, hide the inactive pages
-$(document).ready(function () {
-    // Add event listeners to the buttons
-    $("#button1").on("click", function () {
-        if (!$(this).hasClass("selected")) {
-            hideAllScreens(); // Hide all screens
-            $("#multiCollapseExample1").addClass("show"); // Show Form 1
-            $(this).addClass("selected"); // Add 'selected' class to the clicked button
-            $("#button2, #button3, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
-        }
-    });
-
-    $("#button2").on("click", function () {
-        if (!$(this).hasClass("selected")) {
-            hideAllScreens(); // Hide all screens
-            $("#multiCollapseExample2").addClass("show"); // Show Form 2
-            $(this).addClass("selected"); // Add 'selected' class to the clicked button
-            $("#button1, #button3, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
-        }
-    });
-
-    $("#button3").on("click", function () {
-        if (!$(this).hasClass("selected")) {
-            hideAllScreens(); // Hide all screens
-            $("#multiCollapseExample3").addClass("show"); // Show Form 3
-            $(this).addClass("selected"); // Add 'selected' class to the clicked button
-            $("#button1, #button2, #button4").removeClass("selected"); // Remove 'selected' class from other buttons
-        }
-    });
-
-    $("#button4").on("click", function () {
-        if (!$(this).hasClass("selected")) {
-            hideAllScreens(); // Hide all screens
-            $("#multiCollapseExample4").addClass("show"); // Show Form 4
-            $(this).addClass("selected"); // Add 'selected' class to the clicked button
-            $("#button1, #button2, #button3").removeClass("selected"); // Remove 'selected' class from other buttons
-        }
-    });
-
-    // Function to hide all screens
-    function hideAllScreens() {
-        $(".multi-collapse").removeClass("show");
-    }
-});
-
 function loadRSS() {
     //Use CORS API website as proxy
     let proxy = "https://cors-anywhere.herokuapp.com/";
