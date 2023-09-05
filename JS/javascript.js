@@ -421,7 +421,6 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
       alertMessage.style.display = "none";
     }, 2000);
 
-    updateCartModal();
     updateCartTotal();
   }
 
