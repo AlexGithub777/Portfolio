@@ -443,6 +443,8 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
             alertMessage.style.display = "none";
         }, 2000);
 
+        // Update the cart modal and cart total immediately
+        updateCartModal();
         updateCartTotal();
     }
 
@@ -497,6 +499,22 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
         if (cartItem) {
             // Update the quantity of the cart item
             cartItem.quantity = parsedQuantity;
+
+            // Update the cart modal and cart total
+            updateCartModal();
+            updateCartTotal();
+        }
+    }
+
+    function removeItemFromCart(productIndex) {
+        // Find the index of the cart item by product index
+        const itemIndex = cart.findIndex(
+            (item) => item.productIndex === productIndex
+        );
+
+        if (itemIndex !== -1) {
+            // Remove the item from the cart array
+            cart.splice(itemIndex, 1);
 
             // Update the cart modal and cart total
             updateCartModal();
