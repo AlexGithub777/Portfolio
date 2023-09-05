@@ -492,12 +492,14 @@ li:hover:not(.active) {
 @media screen and (max-width: 768px) {
     .flip-box-front {
         flex-direction: row;
+        padding-left: 10px;
     }
 }
 
 @media screen and (min-width: 768px) {
     .flip-box-front {
         flex-direction: column;
+        justify-content: center;
     }
 }
 
