@@ -479,4 +479,28 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
             clearCartBtn.style.display = "none";
         }
     }
+
+    // Define the updateCartItemQuantity function
+    function updateCartItemQuantity(productIndex, newQuantity) {
+        // Ensure the new quantity is a positive integer
+        const parsedQuantity = parseInt(newQuantity);
+        if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
+            alert("Please enter a valid quantity.");
+            return;
+        }
+
+        // Find the cart item by product index
+        const cartItem = cart.find(
+            (item) => item.productIndex === productIndex
+        );
+
+        if (cartItem) {
+            // Update the quantity of the cart item
+            cartItem.quantity = parsedQuantity;
+
+            // Update the cart modal and cart total
+            updateCartModal();
+            updateCartTotal();
+        }
+    }
 }
