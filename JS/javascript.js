@@ -353,6 +353,10 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
             return;
         }
 
+        if (cart.length > 1) {
+            document.getElementsByClassName("");
+        }
+
         for (const cartItem of cart) {
             const productDiv = document.createElement("div");
             productDiv.classList.add(
@@ -439,7 +443,6 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
             alertMessage.style.display = "none";
         }, 2000);
 
-        updateCartModal();
         updateCartTotal();
     }
 
@@ -474,27 +477,6 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
         } else {
             checkoutButton.style.display = "none"; // Hide the button if the cart is empty
             clearCartBtn.style.display = "none";
-        }
-    }
-
-    function removeItemFromCart(cartIndex) {
-        // Check if the cartIndex is valid
-        if (cartIndex >= 0 && cartIndex < cart.length) {
-            cart.splice(cartIndex, 1); // Remove the item from the cart array
-            updateCartModal(); // Update the cart modal to reflect the changes
-            updateButtonVisibility(); // Update the visibility of buttons
-        }
-    }
-
-    function updateCartItemQuantity(cartIndex, newQuantity) {
-        if (cartIndex >= 0 && cartIndex < cart.length) {
-            // Ensure the new quantity is a positive integer
-            newQuantity = parseInt(newQuantity);
-            if (Number.isInteger(newQuantity) && newQuantity > 0) {
-                cart[cartIndex].quantity = newQuantity; // Update the quantity in the cart array
-                updateCartModal(); // Update the cart modal to reflect the changes
-                updateCartTotal(); // Update the cart total
-            }
         }
     }
 }
