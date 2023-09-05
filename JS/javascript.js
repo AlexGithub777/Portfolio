@@ -353,10 +353,6 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
             return;
         }
 
-        if (cart.length > 1) {
-            document.getElementsByClassName("");
-        }
-
         for (const cartItem of cart) {
             const productDiv = document.createElement("div");
             productDiv.classList.add(
@@ -370,12 +366,34 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
 
             productDiv.innerHTML = `
             <div class="cart-item-img">
-                <img src="${cartItem.imgSrc}" alt="${cartItem.name}" class="img-fluid" style="max-width: 100px;">
+                <img src="${cartItem.imgSrc}" alt="${
+                cartItem.name
+            }" class="img-fluid" style="max-width: 100px;">
             </div>
             <div class="cart-item-details ms-3">
                 <h4 class="fw-bold">${cartItem.name}</h4>
                 <p class="mb-1">Price: $${cartItem.price}</p>
-                <p class="mb-1">Quantity: ${cartItem.quantity}</p>
+                <div class="cart-item-quantity mb-1">
+                    <label for="quantityInput${
+                        cartItem.productIndex
+                    }">Quantity:</label>
+                    <input
+                        type="number"
+                        id="quantityInput${cartItem.productIndex}"
+                        class="form-control form-control-sm mb-2"
+                        style="width: 60px;"
+                        value="${cartItem.quantity}"
+                        min="1"
+                        onchange="updateCartItemQuantity(${
+                            cartItem.productIndex
+                        }, this.value)"
+                    />
+
+                </div>
+                <button class="btn btn-danger mb-2" onclick="removeItemFromCart(${cart.indexOf(
+                    cartItem
+                )})">Remove</button>
+
                 
             </div>
         `;
@@ -456,6 +474,27 @@ if (window.location.href.indexOf("js-demo.html") > -1) {
         } else {
             checkoutButton.style.display = "none"; // Hide the button if the cart is empty
             clearCartBtn.style.display = "none";
+        }
+    }
+
+    function removeItemFromCart(cartIndex) {
+        // Check if the cartIndex is valid
+        if (cartIndex >= 0 && cartIndex < cart.length) {
+            cart.splice(cartIndex, 1); // Remove the item from the cart array
+            updateCartModal(); // Update the cart modal to reflect the changes
+            updateButtonVisibility(); // Update the visibility of buttons
+        }
+    }
+
+    function updateCartItemQuantity(cartIndex, newQuantity) {
+        if (cartIndex >= 0 && cartIndex < cart.length) {
+            // Ensure the new quantity is a positive integer
+            newQuantity = parseInt(newQuantity);
+            if (Number.isInteger(newQuantity) && newQuantity > 0) {
+                cart[cartIndex].quantity = newQuantity; // Update the quantity in the cart array
+                updateCartModal(); // Update the cart modal to reflect the changes
+                updateCartTotal(); // Update the cart total
+            }
         }
     }
 }
