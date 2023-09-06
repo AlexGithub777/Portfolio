@@ -274,14 +274,25 @@ li:hover:not(.active) {
     backface-visibility: hidden;
 }
 
-/* Style the front side */
+/* Style  for the front side */
 .flip-box-front {
-    background-color: white;
-    color: black;
+    background-color: #b7e2e7;
+    color: blue;
+    border: 3px solid #40806b;
     display: flex;
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
+    font-family: cursive;
+}
+
+.flipbox-img {
+    border-radius: 50%;
+    border: 5px solid black;
+    height: auto;
+    max-width: 170px;
+    margin: 5px;
+    mix-blend-mode: darken;
 }
 
 .flip-box-front-myresearch {
@@ -493,6 +504,11 @@ li:hover:not(.active) {
     .flip-box-front {
         flex-direction: row;
         padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .flipbox-img {
+        max-width: 110px;
     }
 }
 
