@@ -139,7 +139,8 @@ nav ul li.dropdown:hover ul {
 
 /*Set hover effect for items in the horizontal-menu*/
 .active {
-    background-color: #ebd175;
+    background-image: linear-gradient(#f6f2b8, #fada74);
+    border: 1px solid #c5c78f;
 }
 
 li:hover:not(.active) {
