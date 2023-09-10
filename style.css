@@ -543,7 +543,7 @@ li:hover:not(.active) {
         display: inline-block;
         color: black;
         text-align: center;
-        padding: 14px 16px;
+        padding: 8px 8px;
         text-decoration: none;
         font-family: "Times New Roman", Times, serif;
     }
